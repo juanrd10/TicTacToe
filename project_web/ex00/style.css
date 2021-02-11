@@ -1,0 +1,35 @@
+body {
+	color: white;
+	background-color: black;
+}
+
+table {
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+td {
+	border: 3px solid white;
+	width: 200px;
+	height: 200px;
+}
+
+h1 {
+	text-align: center;
+}
+
+#clicked {
+	color: white;
+	text-align: center;
+	font-size: 48px;
+}
+
+h2 {
+	text-align: center;
+}
+
+button {
+	text-align: center;
+	font-size: 50px;
+}

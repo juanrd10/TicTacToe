@@ -89,11 +89,14 @@ function intelligent_move() {
 	} else {
 		for (var x = 0; x < 3; x ++) {
 			count = 0;
+			win = 0;
 			array[x].forEach(function(i) {
 				if (i == 'X')
 					count++;
+				if (i == 'O')
+					win++;
 			});
-			if (count == 2) {
+			if (count == 2 || win == 2) {
 				if (array[x][0] != 'X' && array[x][0] != 'O')
 					return [x, 0];
 				if (array[x][1] != 'X' && array[x][1] != 'O')
@@ -104,12 +107,15 @@ function intelligent_move() {
 		}
 		for (var y = 0; y < 3; y ++) {
 			count = 0;
+			win = 0;
 			array2 = [array[0][y], array[1][y], array[2][y]]
 			array2.forEach(function(i) {
 				if (i == 'X')
 					count++;
+				if (i == 'O')
+					win++;
 			});
-			if (count == 2) {
+			if (count == 2 || win == 2) {
 				if (array[0][y] != 'X' && array[0][y] != 'O')
 					return [0, y];
 				if (array[1][y] != 'X' && array[1][y] != 'O')
@@ -121,11 +127,14 @@ function intelligent_move() {
 		diag1 = [array[0][0], array[1][1], array[2][2]]
 		diag2 = [array[2][0], array[1][1], array[0][2]]
 		count = 0;
+		win = 0;
 		diag1.forEach(function(i) {
 			if (i == 'X')
 				count++;
+			if (i == 'O')
+				win++;
 		});
-		if (count == 2)
+		if (count == 2 || win == 2)
 		{
 			if (array[0][0] == 0)
 				return [0, 0];
@@ -135,11 +144,14 @@ function intelligent_move() {
 				return [2, 2];
 		}
 		count = 0;
+		win = 0;
 		diag2.forEach(function(i) {
 			if (i == 'X')
 				count++;
+			if (i == 'O')
+				win++;
 		});
-		if (count == 2)
+		if (count == 2 || win == 2)
 		{
 			if (array[2][0] == 0)
 				return [2, 0];
@@ -147,6 +159,24 @@ function intelligent_move() {
 				return [1, 1];
 			if (array[0][2] == 0)
 				return [0, 2];
+		}
+		if (array[0][0] == 'X' || array[2][2] == 'X')
+		{
+			if (array[1][1] == 0)
+				return [1, 1];
+			if (array[0][0] == 0)
+				return [0, 0];
+			if (array[2][2] == 0)
+				return [2, 2];
+		}
+		if (array[0][2] == 'X' || array[2][0] == 'X')
+		{
+			if (array[1][1] == 0)
+				return [1, 1];
+			if (array[0][2] == 0)
+				return [0, 2];
+			if (array[2][0] == 0)
+				return [2, 0];
 		}
 	}
 	return getRandomPosition();

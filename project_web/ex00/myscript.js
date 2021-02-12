@@ -118,6 +118,36 @@ function intelligent_move() {
 					return [2, y];
 			}
 		}
+		diag1 = [array[0][0], array[1][1], array[2][2]]
+		diag2 = [array[2][0], array[1][1], array[0][2]]
+		count = 0;
+		diag1.forEach(function(i) {
+			if (i == 'X')
+				count++;
+		});
+		if (count == 2)
+		{
+			if (array[0][0] == 0)
+				return [0, 0];
+			if (array[1][1] == 0)
+				return [1, 1];
+			if (array[2][2] == 0)
+				return [2, 2];
+		}
+		count = 0;
+		diag2.forEach(function(i) {
+			if (i == 'X')
+				count++;
+		});
+		if (count == 2)
+		{
+			if (array[2][0] == 0)
+				return [2, 0];
+			if (array[1][1] == 0)
+				return [1, 1];
+			if (array[0][2] == 0)
+				return [0, 2];
+		}
 	}
 	return getRandomPosition();
 }

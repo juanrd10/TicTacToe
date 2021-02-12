@@ -30,6 +30,7 @@ h2 {
 }
 
 button {
+	margin: 5px;
 	text-align: center;
 	font-size: 50px;
 }

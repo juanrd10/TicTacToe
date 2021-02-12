@@ -50,6 +50,7 @@ function play1_vs_1(){
 			coordinates = item.id.split('.');
 			if (array[coordinates[0]][coordinates[1]] == 0 && click) {
 				array[coordinates[0]][coordinates[1]] = turn;
+				item.classList += "clicked";
 				item.innerHTML += "<p id='clicked'>" + turn + "</p>"
 				if (checkWinner(coordinates[0], coordinates[1]) == 1) {
 					document.querySelector('h1').removeAttribute('hidden');
@@ -80,6 +81,7 @@ function ia_movement(){
 	}
 	item = rand1 + "." + rand2;
 	document.getElementById(item).innerHTML = "<p id='clicked'>O</p>"
+	document.getElementById(item).classList += "clicked";
 	array[rand1][rand2] = turn;
 	if (checkWinner(rand1, rand2) == 1) {
 		document.querySelector('h1').removeAttribute('hidden');
@@ -104,6 +106,7 @@ function play_ia(){
 			if (array[coordinates[0]][coordinates[1]] == 0 && click) {
 				array[coordinates[0]][coordinates[1]] = turn;
 				item.innerHTML += "<p id='clicked'>X</p>"
+				item.classList += "clicked";
 				if (checkWinner(coordinates[0], coordinates[1]) == 1) {
 					document.querySelector('h1').removeAttribute('hidden');
 					document.getElementById('winner').innerHTML = turn;

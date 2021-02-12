@@ -34,3 +34,11 @@ button {
 	text-align: center;
 	font-size: 50px;
 }
+
+td {
+	cursor: pointer;
+}
+
+.clicked {
+	cursor: not-allowed;
+}

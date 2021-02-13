@@ -63,6 +63,8 @@ function play1_vs_1(){
 						document.getElementById('winner').innerHTML = "none";
 					document.querySelector('p').setAttribute('hidden', 'true');
 					document.getElementById('retry').removeAttribute('hidden');
+					document.getElementById('turn-text').setAttribute('hidden', 'true');
+
 					click = false;
 				}
 				turn = turn == 'X' ? 'O' : 'X';
@@ -207,6 +209,7 @@ function ia_movement(){
 			document.getElementById('winner').innerHTML = "none";
 		document.querySelector('p').setAttribute('hidden', 'true');
 		document.getElementById('retry').removeAttribute('hidden');
+		document.getElementById('turn-text').setAttribute('hidden', 'true');
 		click = false;
 	}
 	turn = 'X';
@@ -229,12 +232,14 @@ function play_ia(){
 					document.getElementById('winner').innerHTML = turn;
 					document.querySelector('p').setAttribute('hidden', 'true');
 					document.getElementById('retry').removeAttribute('hidden');
+					document.getElementById('turn-text').setAttribute('hidden', 'true');
 					click = false;
 				} else if (checkWinner(coordinates[0], coordinates[1]) == 2) {
 					document.querySelector('h1').removeAttribute('hidden');
 					document.getElementById('winner').innerHTML = "none";
 					document.querySelector('p').setAttribute('hidden', 'true');
 					document.getElementById('retry').removeAttribute('hidden');
+					document.getElementById('turn-text').setAttribute('hidden', 'true');
 					click = false;
 				} else {
 				turn = 'O';

@@ -3,7 +3,7 @@ var array = [
 	[0, 0, 0],
 	[0, 0, 0]
 ];
-const difficuly = 'hard';
+var difficuly = 'hard';
 var click = true;
 var turn = 'X'
 var start = 'O'
@@ -82,6 +82,16 @@ function getRandomPosition() {
 	return [rand1, rand2];
 }
 
+function allRandomPosition() {
+	rand1 = Math.floor(Math.random() * 3)
+	rand2 = Math.floor(Math.random() * 3)
+	while (array[rand1][rand2] != 0){
+		rand1 = Math.floor(Math.random() * 3)
+		rand2 = Math.floor(Math.random() * 3)
+	}
+	return [rand1, rand2];
+}
+
 function can_win(chr)
 {
 	for (var x = 0; x < 3; x ++) {
@@ -151,7 +161,7 @@ function can_win(chr)
 
 function intelligent_move() {
 	if (difficuly == 'easy') {
-		return getRandomPosition();
+		return allRandomPosition();
 	}
 	else {
 		nxt_win = can_win('O');
@@ -243,6 +253,7 @@ document.getElementById('play').addEventListener('click', event => {
 	document.querySelector('p').removeAttribute('hidden');
 	document.getElementById('turn-text').removeAttribute('hidden');
 	document.getElementById('turns').setAttribute('hidden', 'true');
+	document.getElementById('difficulty').setAttribute('hidden', 'true');
 	play1_vs_1();
 });
 
@@ -254,7 +265,9 @@ document.getElementById('play_ia').addEventListener('click', event => {
 	document.querySelector('p').removeAttribute('hidden');
 	document.getElementById('turn-text').removeAttribute('hidden');
 	document.getElementById('turns').setAttribute('hidden', 'true');
+	document.getElementById('difficulty').setAttribute('hidden', 'true');
 	start = document.getElementById('first-move').value == 1 ? 'X' : 'O';
+	difficuly = document.getElementById('diffic').value == 1 ? 'easy' : 'hard';
 	play_ia();
 });
 

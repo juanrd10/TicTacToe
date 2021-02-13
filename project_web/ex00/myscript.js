@@ -159,7 +159,6 @@ function intelligent_move() {
 		nxt_win = can_win('X');
 		if (nxt_win != null)
 		return (nxt_win);
-		console.log(nxt_win);
 		if (array[0][0] == 'X' || array[2][2] == 'X')
 		{
 		if (array[1][1] == 0)

@@ -53,15 +53,13 @@ function play1_vs_1(){
 				array[coordinates[0]][coordinates[1]] = turn;
 				item.classList += "clicked";
 				item.innerHTML += "<p id='clicked'>" + turn + "</p>"
-				if (checkWinner(coordinates[0], coordinates[1]) == 1) {
+				winner = checkWinner(coordinates[0], coordinates[1]);
+				if (winner != 0) {
 					document.querySelector('h1').removeAttribute('hidden');
-					document.getElementById('winner').innerHTML = turn;
-					document.querySelector('p').setAttribute('hidden', 'true');
-					document.getElementById('retry').removeAttribute('hidden');
-					click = false;
-				} else if (checkWinner(coordinates[0], coordinates[1]) == 2) {
-					document.querySelector('h1').removeAttribute('hidden');
-					document.getElementById('winner').innerHTML = "none";
+					if (winner == 1)
+						document.getElementById('winner').innerHTML = turn;
+					else if (winner == 2)
+						document.getElementById('winner').innerHTML = "none";
 					document.querySelector('p').setAttribute('hidden', 'true');
 					document.getElementById('retry').removeAttribute('hidden');
 					click = false;
@@ -83,87 +81,89 @@ function getRandomPosition() {
 	return [rand1, rand2];
 }
 
+function can_win(chr)
+{
+	for (var x = 0; x < 3; x ++) {
+		count = 0;
+		array[x].forEach(function(i) {
+			if (i == chr)
+				count++;
+		});
+		if (count == 2) {
+			if (array[x][0] == 0)
+				return [x, 0];
+			if (array[x][1] == 0)
+				return [x, 1];
+			if (array[x][2] == 0)
+				return [x, 2];
+		}
+	}
+	for (var y = 0; y < 3; y ++) {
+		count = 0;
+		array2 = [array[0][y], array[1][y], array[2][y]]
+		array2.forEach(function(i) {
+			if (i == chr)
+				count++;
+		});
+		if (count == 2) {
+			if (array[0][y] == 0)
+				return [0, y];
+			if (array[1][y] == 0)
+				return [1, y];
+			if (array[2][y] == 0)
+				return [2, y];
+		}
+	}
+	diag1 = [array[0][0], array[1][1], array[2][2]]
+	diag2 = [array[2][0], array[1][1], array[0][2]]
+	count = 0;
+	diag1.forEach(function(i) {
+		if (i == chr)
+			count++;
+	});
+	if (count == 2)
+	{
+		if (array[0][0] == 0)
+			return [0, 0];
+		if (array[1][1] == 0)
+			return [1, 1];
+		if (array[2][2] == 0)
+			return [2, 2];
+	}
+	count = 0;
+	diag2.forEach(function(i) {
+		if (i == chr)
+			count++;
+	});
+	if (count == 2)
+	{
+		if (array[2][0] == 0)
+			return [2, 0];
+		if (array[1][1] == 0)
+			return [1, 1];
+		if (array[0][2] == 0)
+			return [0, 2];
+	}
+	return null
+}
+
+
 function intelligent_move() {
 	if (difficuly == 'easy') {
 		return getRandomPosition();
-	} else {
-		for (var x = 0; x < 3; x ++) {
-			count = 0;
-			win = 0;
-			array[x].forEach(function(i) {
-				if (i == 'X')
-					count++;
-				if (i == 'O')
-					win++;
-			});
-			if (count == 2 || win == 2) {
-				if (array[x][0] != 'X' && array[x][0] != 'O')
-					return [x, 0];
-				if (array[x][1] != 'X' && array[x][1] != 'O')
-					return [x, 1];
-				if (array[x][2] != 'X' && array[x][2] != 'O')
-					return [x, 2];
-			}
-		}
-		for (var y = 0; y < 3; y ++) {
-			count = 0;
-			win = 0;
-			array2 = [array[0][y], array[1][y], array[2][y]]
-			array2.forEach(function(i) {
-				if (i == 'X')
-					count++;
-				if (i == 'O')
-					win++;
-			});
-			if (count == 2 || win == 2) {
-				if (array[0][y] != 'X' && array[0][y] != 'O')
-					return [0, y];
-				if (array[1][y] != 'X' && array[1][y] != 'O')
-					return [1, y];
-				if (array[2][y] != 'X' && array[2][y] != 'O')
-					return [2, y];
-			}
-		}
-		diag1 = [array[0][0], array[1][1], array[2][2]]
-		diag2 = [array[2][0], array[1][1], array[0][2]]
-		count = 0;
-		win = 0;
-		diag1.forEach(function(i) {
-			if (i == 'X')
-				count++;
-			if (i == 'O')
-				win++;
-		});
-		if (count == 2 || win == 2)
-		{
-			if (array[0][0] == 0)
-				return [0, 0];
-			if (array[1][1] == 0)
-				return [1, 1];
-			if (array[2][2] == 0)
-				return [2, 2];
-		}
-		count = 0;
-		win = 0;
-		diag2.forEach(function(i) {
-			if (i == 'X')
-				count++;
-			if (i == 'O')
-				win++;
-		});
-		if (count == 2 || win == 2)
-		{
-			if (array[2][0] == 0)
-				return [2, 0];
-			if (array[1][1] == 0)
-				return [1, 1];
-			if (array[0][2] == 0)
-				return [0, 2];
-		}
+	}
+	else {
+		nxt_win = can_win('O');
+		if (nxt_win != null)
+			return (nxt_win);
+		nxt_win = can_win('X');
+		if (nxt_win != null)
+		return (nxt_win);
+		console.log(nxt_win);
 		if (array[0][0] == 'X' || array[2][2] == 'X')
 		{
-			if (array[1][1] == 0)
-				return [1, 1];
+		if (array[1][1] == 0)
+		return [1, 1];
 			if (array[0][0] == 0)
 				return [0, 0];
 			if (array[2][2] == 0)
@@ -188,15 +188,13 @@ function ia_movement(){
 	document.getElementById(item).innerHTML = "<p id='clicked'>O</p>"
 	document.getElementById(item).classList += "clicked";
 	array[move[0]][move[1]] = turn;
-	if (checkWinner(move[0], move[1]) == 1) {
+	winner = checkWinner(coordinates[0], coordinates[1]);
+	if (winner != 0) {
 		document.querySelector('h1').removeAttribute('hidden');
-		document.getElementById('winner').innerHTML = turn;
-		document.querySelector('p').setAttribute('hidden', 'true');
-		document.getElementById('retry').removeAttribute('hidden');
-		click = false;
-	} else if (checkWinner(move[0], move[1]) == 2) {
-		document.querySelector('h1').removeAttribute('hidden');
-		document.getElementById('winner').innerHTML = "none";
+		if (winner == 1)
+			document.getElementById('winner').innerHTML = turn;
+		if (winner == 2)
+			document.getElementById('winner').innerHTML = "none";
 		document.querySelector('p').setAttribute('hidden', 'true');
 		document.getElementById('retry').removeAttribute('hidden');
 		click = false;

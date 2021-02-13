@@ -1,6 +1,7 @@
 body {
 	color: white;
 	background-color: black;
+	font-family: 'Trebuchet MS', sans-serif;
 }
 
 table {
@@ -17,10 +18,17 @@ td {
 
 h1 {
 	text-align: center;
+	margin-top: -20px;
+	font-size: 50px;
+}
+
+#turn-text {
+	text-align: center;
+	margin-top: -20px;
+	font-size: 50px;
 }
 
 #clicked {
-	color: white;
 	text-align: center;
 	font-size: 48px;
 }
@@ -30,9 +38,19 @@ h2 {
 }
 
 button {
+	color: white;
+	border-style: solid;
+	border-color: white;
+	background-color: black;
 	margin: 5px;
 	text-align: center;
 	font-size: 50px;
+	transition-duration: .5s;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: red;
 }
 
 td {

@@ -8,7 +8,15 @@
 </head>
 
 <body>
-	<h2><button id="play">Play 1 vs 1</button><br/><button id="play_ia">Play vs IA</button></h2>
+	<h2>
+		<button id="play">Play 1 vs 1</button><br/><button id="play_ia">Play vs AI</button>
+	</h2>
+	<h2 id="turns">
+		<p>First turn:</p>
+		<label for="first-move">YOU</label>
+		<input id="first-move" type="range" min="1" max="2" name="first-move">
+		<label for="first-move">AI</label>
+	</h2>
 	<p id="turn-text" hidden>Turn: <span id="turn"></span></p>
 	<h1 hidden>The winner is <span id="winner"></span></h1>
 	<table hidden>

@@ -203,10 +203,8 @@ function ia_movement(){
 }
 
 function play_ia(){
-	if (start == 'O')
-	{
+	if (start == 'O') {
 		turn = 'O'
-		start = 'X'
 		ia_movement();
 	}
 		document.querySelectorAll('td').forEach(item => {
@@ -243,6 +241,8 @@ document.getElementById('play').addEventListener('click', event => {
 	document.querySelector('table').removeAttribute('hidden');
 	document.getElementById('turn').innerHTML = turn;
 	document.querySelector('p').removeAttribute('hidden');
+	document.getElementById('turn-text').removeAttribute('hidden');
+	document.getElementById('turns').setAttribute('hidden', 'true');
 	play1_vs_1();
 });
 
@@ -252,6 +252,9 @@ document.getElementById('play_ia').addEventListener('click', event => {
 	document.querySelector('table').removeAttribute('hidden');
 	document.getElementById('turn').innerHTML = turn;
 	document.querySelector('p').removeAttribute('hidden');
+	document.getElementById('turn-text').removeAttribute('hidden');
+	document.getElementById('turns').setAttribute('hidden', 'true');
+	start = document.getElementById('first-move').value == 1 ? 'X' : 'O';
 	play_ia();
 });
 

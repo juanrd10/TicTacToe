@@ -6,6 +6,7 @@ var array = [
 const difficuly = 'hard';
 var click = true;
 var turn = 'X'
+var start = 'O'
 
 function checkWinner(x, y) {
 	for (var i = 0; i < 3; i++) {
@@ -202,7 +203,13 @@ function ia_movement(){
 }
 
 function play_ia(){
-	document.querySelectorAll('td').forEach(item => {
+	if (start == 'O')
+	{
+		turn = 'O'
+		start = 'X'
+		ia_movement();
+	}
+		document.querySelectorAll('td').forEach(item => {
 		item.addEventListener('click', event => {
 			coordinates = item.id.split('.');
 			if (array[coordinates[0]][coordinates[1]] == 0 && click) {

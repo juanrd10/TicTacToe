@@ -187,7 +187,7 @@ function ia_movement(){
 	document.getElementById(item).innerHTML = "<p id='clicked'>O</p>"
 	document.getElementById(item).classList += "clicked";
 	array[move[0]][move[1]] = turn;
-	winner = checkWinner(coordinates[0], coordinates[1]);
+	winner = checkWinner(move[0], move[1]);
 	if (winner != 0) {
 		document.querySelector('h1').removeAttribute('hidden');
 		if (winner == 1)

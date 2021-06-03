@@ -1,8 +1,5 @@
 # TIC TAC TOE
 
-![Menu](https://github.com/juanrd10/TicTacToe/blob/master/photosReadme/Menu.png)
-![InGame](https://github.com/juanrd10/TicTacToe/blob/master/photosReadme/InGame.png)
-
 Proyecto final de la piscina de Ruby en 42.
 
 ### Pre-requisitos 📋
@@ -25,3 +22,6 @@ Testado con la versión 2.6.3
 
 Solo queda disfrutar!
 Intenta ganar a nuestra IA en HARD mode!
+
+![Menu](https://github.com/juanrd10/TicTacToe/blob/master/photosReadme/Menu.png)
+![InGame](https://github.com/juanrd10/TicTacToe/blob/master/photosReadme/InGame.png)

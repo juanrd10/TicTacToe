@@ -1,7 +1,7 @@
 # TIC TAC TOE
 
-![alt text](https://github.com/juanrd10/TicTacToe/tree/master/photosReadme/Menu.png)
-![alt text](https://github.com/juanrd10/TicTacToe/tree/master/photosReadme/InGame.png)
+![alt text](https://github.com/juanrd10/TicTacToe/photosReadme/Menu.png)
+![alt text](https://github.com/juanrd10/TicTacToe/photosReadme/InGame.png)
 
 Proyecto final de la piscina de Ruby en 42.
 
